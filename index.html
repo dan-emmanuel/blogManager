@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous">
+
+        <!-- js scripts -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+
+        <title>Blog Manager</title>
+    </head>
+
+
+    <body>
+        <div class="container">
+            <br>
+            <br>
+            <!-- Button trigger modal -->
+            <div class="container-fluid">
+                <button type="button" class="btn btn-primary" id="modalTrigger"  data-toggle="modal" data-target="#exampleModal">
+                    Launch demo modal
+                </button>
+            </div>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        
+                        <form class="container">
+                            <div class="modal-body">                             
+                                        <div class="form-group col-3">
+                                            <label form="blogContent" for="ID">ID</label>
+                                            <input name="id" type="number" class="form-control text-sm-left" id="id" readonly>
+                                        </div>
+                                
+                                        <div class="form-group">
+                                            <label for="title">Post Title</label>
+                                            <input form="blogContent" name="title" type="text" class="form-control" id="title" placeholder="What's your article title">
+                                        </div>
+                                
+                                        
+                                        <div class="form-group">
+                                            <label for="pseudo">Pseudo</label>
+                                            <input form="blogContent" name="pleudo" type="text" class="form-control" id="pseudo" placeholder="Enter email">                                
+                                        </div>
+                                       
+                                        <div class="form-group">
+                                            <label  form="blogContent" for="content"> Post Content </label>
+                                            <textarea name="content" placeholder="Type your message here" form="blogContent" class="form-control" id="content" ></textarea>
+                                        </div>
+
+                                        
+                                        <div class="form-group">
+                                            <label form="blogContent" for="date">Post date</label>
+                                            <input name="date" type= "date" class="form-control" id="date" aria-describedby="text" placeholder="your 7th firs IDS numbers" readonly>
+                                        </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" id="closeModal" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary" id="addArticle">New comment</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="container">
+                <table class="table table-striped table-hover table-info ">
+                    <thead>
+                        <tr  >
+                            <th class=" ">ID</th>
+                            <th class=" ">TITLE</th>
+                            <th class="">CONTENT</th>
+                            <th class=" ">DATE</th>
+                            <th class=" ">PSEUDO</th>
+                            <th class=""></th>
+                            <th class=""></th>
+                        </tr>
+                        
+                    </thead>
+                    <tbody>
+                        <tr class="">
+                            <td class=" text-truncate id" style="max-width : 100%" >1</td>
+                            <td class="  title text-truncate" style="max-width : 100%" >title</td>
+                            <td class=" overflow-auto content text-truncate style="max-width : 100%"">content</td>
+                            <td class=" date text-truncate date " style="max-width : 100%">2019-02-01</td>
+                            <td class=" pseudo text-truncate" style="max-width : 100%">psudo</td>
+                            <td class=""><button type="button" class="btn btn-warning modifyButton">Modify</button></td>
+                            <td class=""><button type="button" class="btn btn-danger deleteButton">Delete</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <script src="js.js"></script>
+    </body>
+
+</html>
+
+
