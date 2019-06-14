@@ -1,8 +1,12 @@
 
 //MODEL
 var currentLine, elementsLine;  
-var classsToCheck = ["id", "title", "content", "date", "pseudo"];
-function idAndDateSet(){
+function articles(){
+    var allArticles = $("tbody > tr");
+    return allArticles
+}
+
+function modalSet(){
     var id = $("tbody > tr").length+1;
     Date.prototype.toDateInputValue = (function () {
         var local = new Date(this);
@@ -11,6 +15,9 @@ function idAndDateSet(){
     });
     $("input[name = 'id']").val(id);
     $("input[name = 'date']").val(new Date().toDateInputValue());
+    $("#title").val("");
+    $("#content").val("");
+    $("#pseudo").val("");
 
 };
 
@@ -36,16 +43,18 @@ function article(id, title, content, date, pseudo) {
     this.pseudo = pseudo;
 };
 
-
 //Vue
+var classsToCheck = ["id", "title", "content", "date", "pseudo"];
+
+
 function newRowCreation(article){
     var tableRow = "";
-    tableRow = '<tr class="">';
-    tableRow += '<td class=" text-truncate id" style="max-width : 100%">' + article.id + "</td >";
-    tableRow += '<td class="  title text-truncate" style="max-width : 100%" >' + article.title + "</td >";
-    tableRow += '<td class=" overflow-auto content text-truncate" style="max-width : 100%">' + article.content + "</td >";
-    tableRow += '<td class=" date text-truncate date" style="max-width : 100%" >' + article.date + "</td >";
-    tableRow += '<td class=" pseudo text-truncate" style="max-width : 100%" >' + article.pseudo + "</td >";
+    tableRow = '<tr class="" id="article' + article.id+'">';
+    tableRow += '<td class=" verflow-auto  text-truncate id " style="max-width : 100%">' + article.id + "</td >";
+    tableRow += '<td class="  title verflow-auto  text-truncate" style="max-width : 100%" >' + article.title + "</td >";
+    tableRow += '<td class=" content verflow-auto  text-truncate" style="max-width : 100%">' + article.content + "</td >";
+    tableRow += '<td class=" date verflow-auto  text-truncate " style="max-width : 100%" >' + article.date + "</td >";
+    tableRow += '<td class=" pseudo text-truncate verflow-auto  text-truncate" style="max-width : 100%" >' +article.pseudo +"</td >";
     tableRow += '<td class=""><button type="button" class="btn btn-warning modifyButton" style="max-width : 100%">Modify</button></td>';
     tableRow += '<td class=""><button type="button"  class="btn btn-danger deleteButton" style="max-width : 100%">Delete</button></td>';
     tableRow += '</tr>';
@@ -53,7 +62,6 @@ function newRowCreation(article){
 };
 
 function modifyModalValues(element) {
-    
     elementsLine = $(element).parents("tr").find("td");
 
     classsToCheck.forEach(function(element){
@@ -66,11 +74,13 @@ function modifyModalValues(element) {
                 currentvalue=$(this).text();
                 currentid='#'+element;
                 $(currentid).val(currentvalue)
+
             }
         })
     });
+
     return elementsLine;
-    
+
 };
 
 function modifyTabelValues(button){
@@ -79,16 +89,34 @@ function modifyTabelValues(button){
       .parents(".modal-footer")
       .siblings(".modal-body")
         .find(".form-control");
+    
+     if ($(this).attr('id') == 'id') {
+                    var rowId = '#article' + $(this).val()
+                }
+
+    var rowId = '#article' + $(button)
+        .parents(".modal-footer")
+        .siblings(".modal-body")
+        .find('#id')
+        .val()
+
     classsToCheck.forEach(function (element) {
         var currentid = element;
-
         elementsModal.each(function () {
-
+           
             checker = $(this).attr('id')==(currentid)
+            
             if (checker) {
+               
                 currentvalue = $(this).val();
                 currentclass = '.' + element;
-                $(currentclass).text(currentvalue)
+                console.log(this)
+                console.log(currentvalue)
+                console.log(currentclass)
+                console.log('$('+rowId+').find('+currentclass+')')
+                console.log($(rowId).find(currentclass))
+                console.log($(rowId).find(currentclass).text())
+                $(rowId).find(currentclass).text(currentvalue)
             }
         })
     });
@@ -112,7 +140,7 @@ function blankValues() {
 $(function () {
     
     $("#modalTrigger").click(function(){ 
-        idAndDateSet();
+        modalSet();
     });
 
     $("#addArticle").click(function () {
@@ -130,9 +158,8 @@ $(function () {
 
     });
 
-    $("#closeModal").click(function() {
+    $("#exampleModal").on(" hidden.bs.modal ", function() {
       $("#addArticle").text("New content");
-     
     });
 
 

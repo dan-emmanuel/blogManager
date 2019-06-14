@@ -31,7 +31,7 @@
             <!-- Button trigger modal -->
             <div class="container-fluid">
                 <button type="button" class="btn btn-primary" id="modalTrigger"  data-toggle="modal" data-target="#exampleModal">
-                    Launch demo modal
+                    New comment
                 </button>
             </div>
             
@@ -77,7 +77,7 @@
 
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" id="closeModal" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 <button type="button" class="btn btn-primary" id="addArticle">New comment</button>
                             </div>
                         </form>
@@ -102,12 +102,12 @@
                         
                     </thead>
                     <tbody>
-                        <tr class="">
-                            <td class=" text-truncate id" style="max-width : 100%" >1</td>
-                            <td class="  title text-truncate" style="max-width : 100%" >title</td>
-                            <td class=" overflow-auto content text-truncate style="max-width : 100%"">content</td>
-                            <td class=" date text-truncate date " style="max-width : 100%">2019-02-01</td>
-                            <td class=" pseudo text-truncate" style="max-width : 100%">psudo</td>
+                        <tr class="" id="article1">
+                            <td class=" text-truncate id">1</td>
+                            <td class="  title text-truncate">title</td>
+                            <td class=" overflow-auto content text-truncate">content</td>
+                            <td class=" date text-truncate date">2019-02-01</td>
+                            <td class=" pseudo text-truncate">psudo</td>
                             <td class=""><button type="button" class="btn btn-warning modifyButton">Modify</button></td>
                             <td class=""><button type="button" class="btn btn-danger deleteButton">Delete</button></td>
                         </tr>
@@ -117,6 +117,21 @@
         </div>
         <script src="js.js"></script>
     </body>
+<style>
+
+.table {
+  table-layout: fixed;
+}
+
+
+td {
+max-width: 100%;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+
+}
+</style>
 
 </html>
 
